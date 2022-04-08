@@ -15,7 +15,7 @@ class BottombarWidget extends StatefulWidget {
 
 class _BottombarWidgetState extends State<BottombarWidget> {
   @override
-  int current_page = 0;
+  int current_page = 2;
   late PageController pageController;
   void initState() {
     super.initState();
