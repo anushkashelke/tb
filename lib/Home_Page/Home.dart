@@ -3,6 +3,8 @@ import 'package:timbrebells/Bottom_navigation_bar.dart';
 import 'package:timbrebells/Home_Page/SideDrawer.dart';
 import 'package:timbrebells/Home_Page/PostWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
 class home_page extends StatefulWidget {
   const home_page({Key? key}) : super(key: key);
 
@@ -31,15 +33,16 @@ class _home_pageState extends State<home_page> {
           actions: [
             IconButton(
                 icon: Icon(
-                  Icons.search,
+                  MdiIcons.featureSearch,
                   size: 35,
                 ),
                 onPressed: () {}),
             IconButton(
-                icon: const Icon(Icons
-                    .message_outlined), //Image.asset('assests/images/messanger.png'
-
-                onPressed: () {})
+                icon: const Icon(
+                    MdiIcons.message, //Image.asset('assests/images/messanger.png'
+                ),
+                onPressed: () {},
+            )
           ],
         ),
         drawer: SideDrawer(),
