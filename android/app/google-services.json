@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "530456149502",
+    "project_id": "timbrebells-app",
+    "storage_bucket": "timbrebells-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:530456149502:android:3ef2cd10faf383c82b54af",
+        "android_client_info": {
+          "package_name": "com.example.timbrebells"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "530456149502-vk3iln63k4ppvfra9janj67rso4igfsb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_cV4AllV-yvM3hHD6G9QVmirNrR_y8ck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "530456149502-vk3iln63k4ppvfra9janj67rso4igfsb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
