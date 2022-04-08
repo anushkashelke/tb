@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:timbrebells/Community/community_pageMain.dart';
 import 'package:timbrebells/Screens/Add_post.dart';
 import 'package:timbrebells/Home_Page/Home.dart';
 import 'package:timbrebells/providers/Userprovider.dart';
@@ -15,7 +16,7 @@ class BottombarWidget extends StatefulWidget {
 
 class _BottombarWidgetState extends State<BottombarWidget> {
   @override
-  int current_page = 0;
+  int current_page = 2;
   late PageController pageController;
   void initState() {
     super.initState();
@@ -47,7 +48,7 @@ class _BottombarWidgetState extends State<BottombarWidget> {
         body: PageView(
           children: [
             home_page(),
-            Text('community'),
+            CommunityPageMain(),
             Add_post(),
             Text('favorite'),
             ConnectScreen(),
