@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:timbrebells/Profile/follow_button.dart';
 import 'package:timbrebells/Utils/Image_picker.dart';
+import 'package:timbrebells/resources/FireStoreMethods.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String uid;
@@ -118,14 +119,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               backgroundColor: Colors.blue,
                                               textColor: Colors.white,
                                               borderColor: Colors.blue,
-                                              function: () {},
+                                              function: () async {
+                                                await FireStoreMethods()
+                                                    .followUser(
+                                                  FirebaseAuth.instance
+                                                      .currentUser!.uid,
+                                                  userData['uid'],
+                                                );
+                                                setState(() {
+                                                  isFollowing = false;
+                                                  followers--;
+                                                });
+                                              },
                                             )
                                           : FollowButton(
                                               text: 'Follow',
                                               backgroundColor: Colors.blue,
                                               textColor: Colors.white,
                                               borderColor: Colors.blue,
-                                              function: () {},
+                                              function: () async {
+                                                await FireStoreMethods()
+                                                    .followUser(
+                                                  FirebaseAuth.instance
+                                                      .currentUser!.uid,
+                                                  userData['uid'],
+                                                );
+                                                setState(() {
+                                                  isFollowing = true;
+                                                  followers++;
+                                                });
+                                              },
                                             )
                                 ],
                               )
@@ -152,9 +175,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       )
                     ],
                   ),
-                )
+                ),
+                const Divider(),
+                FutureBuilder(
+                  future: FirebaseFirestore.instance
+                      .collection('posts')
+                      .where('uid', isEqualTo: widget.uid)
+                      .get(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    return GridView.builder(
+                      shrinkWrap: true,
+                      itemCount: (snapshot.data! as dynamic).docs.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 5,
+                        mainAxisSpacing: 1.5,
+                        childAspectRatio: 1,
+                      ),
+                      itemBuilder: (context, index) {
+                        DocumentSnapshot snap =
+                            (snapshot.data! as dynamic).docs[index];
+                        return Container(
+                          child: Image(
+                            image: NetworkImage(snap['PostUrl']),
+                            fit: BoxFit.cover,
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ) //stream builder is not used bcoz we only need to display posts and not update anything to firebase(eg. likes,comments)
               ],
-            ));
+            ),
+          );
   }
 
   Column buildStateColumn(int num, String label) {

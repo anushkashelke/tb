@@ -15,7 +15,7 @@ class _CommunityListviewState extends State<CommunityListview> {
     return TextButton(
       child:  ListTile(
           leading:const CircleAvatar(
-            backgroundImage: AssetImage('images/classicalMusic.png'),
+            //backgroundImage: AssetImage('images/classicalMusic.png'),
           ),
           title:Text(
             commName,

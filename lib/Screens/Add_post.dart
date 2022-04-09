@@ -29,9 +29,15 @@ class _Add_postState extends State<Add_post> {
     });
       try{
         String result= await FireStoreMethods().uploadPost(_descriptionController.text, uid,username, _file!);
-        /*if (res=="success"){
-
-        } */
+        if (result=="success"){
+             setState(() {
+               _isLoading=false;
+             });
+             showSnackBar(
+                context,
+                "Posted!",
+             );
+        }
         clearImage();
      }
      catch(e){

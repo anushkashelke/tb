@@ -38,7 +38,7 @@ class _CommunityPageMainState extends State<CommunityPageMain> {
                           "Join a Community",
                           style: TextStyle(
                               color: Color(0xff630000),
-                              fontSize: 40,
+                              fontSize: 30,
                               fontFamily: 'Satisfy',
                               fontWeight: FontWeight.bold
                           ),
@@ -68,7 +68,7 @@ class _CommunityPageMainState extends State<CommunityPageMain> {
                         "Create a Community",
                         style: TextStyle(
                             color: Color(0xff630000),
-                            fontSize: 38,
+                            fontSize: 30,
                             fontFamily: 'Satisfy',
                             fontWeight: FontWeight.bold
                         ),

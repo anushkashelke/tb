@@ -113,8 +113,10 @@ class _PostWidgetState extends State<Post_widget> {
                   user.uid,
                   widget.snap['Likes'],
                 );
-                isLikeAnimating = true;
-                print("Check");
+                setState(() {
+                  isLikeAnimating = true;
+                  print("Check");
+                });
               },
               child: Stack(
                 alignment: Alignment.center,
