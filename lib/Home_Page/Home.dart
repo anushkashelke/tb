@@ -4,6 +4,7 @@ import 'package:timbrebells/Home_Page/SideDrawer.dart';
 import 'package:timbrebells/Home_Page/PostWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:timbrebells/Chat Page/Chat Page.dart';
 
 class home_page extends StatefulWidget {
   const home_page({Key? key}) : super(key: key);
@@ -31,17 +32,19 @@ class _home_pageState extends State<home_page> {
             ),
           ),
           actions: [
-            IconButton(
+            /*IconButton(
                 icon: Icon(
                   MdiIcons.featureSearch,
                   size: 35,
                 ),
-                onPressed: () {}),
+                onPressed: () {}), */
             IconButton(
                 icon: const Icon(
                     MdiIcons.message, //Image.asset('assests/images/messanger.png'
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Chat(),),);
+                },
             )
           ],
         ),

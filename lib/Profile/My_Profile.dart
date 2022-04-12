@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:timbrebells/Profile/follow_button.dart';
 import 'package:timbrebells/Utils/Image_picker.dart';
 import 'package:timbrebells/resources/FireStoreMethods.dart';
+import 'package:timbrebells/resources/auth_method.dart';
+import 'package:timbrebells/Welcome.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String uid;
@@ -107,11 +109,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   FirebaseAuth.instance.currentUser!.uid ==
                                           widget.uid
                                       ? FollowButton(
-                                          text: 'Edit Profile',
+                                          text: 'Sign Out',
                                           backgroundColor: Colors.white,
                                           textColor: Colors.black,
                                           borderColor: Colors.grey,
-                                          function: () {},
+                                          function: () async{
+                                            await auth_methods().SignOut();
+                                            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const Welcome(),),);
+                                          },
                                         )
                                       : isFollowing
                                           ? FollowButton(

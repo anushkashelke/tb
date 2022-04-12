@@ -1,5 +1,6 @@
 //sign up page
 import 'package:flutter/material.dart';
+import 'package:timbrebells/Utils/Image_picker.dart';
 import 'package:timbrebells/resources/auth_method.dart';
 import 'package:timbrebells/text_field_input.dart';
 import 'package:timbrebells/Home_Page/Home.dart';
@@ -32,7 +33,9 @@ class _SignUpState extends State<SignUp> {
     if (res == "success") {
       Navigator.of(context).pushReplacement(   //through push replacement it won't navigate back to sign up page from the home page
           MaterialPageRoute(builder: (context) => const BottombarWidget()));
-    } else {}
+    } else {
+      showSnackBar(context, 'some error occured');
+    }
   }
 
   Widget build(BuildContext context) {
@@ -74,22 +77,44 @@ class _SignUpState extends State<SignUp> {
                   textEditingController: _emailController,
                 ),
               ),
-              InkWell(
+              Container(
+                height: 43,
+                width: 130,
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple,),
+                child: TextButton(
+                  onPressed: () {   //to jump on pages
+                    SignUpUser();
+                  },
+                  child: Text(
+                    'Submit',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(
+                        const EdgeInsets.symmetric(vertical: 10, horizontal: 20)),
+                  ),
+                ),
+              ),
+              /*InkWell(
                 onTap: () async {
                   SignUpUser();
                 },
+                child:Padding(
+                  padding: EdgeInsets.all(10),
                 child: Container(
                   height: 50,
-                  width: 250,
+                  width: 150,
                   decoration: BoxDecoration(
                       color: Colors.blue[900],
-                      borderRadius: BorderRadius.circular(20)),
+                      borderRadius: BorderRadius.circular(10)),
                   child: Text(
                     'Submit',
                     style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                 ),
               ),
+              ),*/
             ],
           ),
         ),

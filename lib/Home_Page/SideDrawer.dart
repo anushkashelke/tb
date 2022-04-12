@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:timbrebells/Bottom_navigation_bar.dart';
 import 'package:timbrebells/Profile/My_Profile.dart';
 import 'package:timbrebells/resources/auth_method.dart';
 import 'package:timbrebells/Screens/Sign in.dart';
-
+import 'package:timbrebells/Welcome.dart';
 class SideDrawer extends StatelessWidget {
   const SideDrawer({Key? key}) : super(key: key);
 
@@ -91,7 +92,7 @@ class SideDrawer extends StatelessWidget {
             ),
             onTap: () async{
               await auth_methods().SignOut();
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const SignIn(),),);
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const Welcome(),),);
             },
           ),
         ],

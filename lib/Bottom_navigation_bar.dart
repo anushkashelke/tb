@@ -16,7 +16,7 @@ class BottombarWidget extends StatefulWidget {
 
 class _BottombarWidgetState extends State<BottombarWidget> {
   @override
-  int current_page = 2;
+  int current_page = 0;
   late PageController pageController;
   void initState() {
     super.initState();
@@ -67,12 +67,11 @@ class _BottombarWidgetState extends State<BottombarWidget> {
             iconSize: 35,
             items: [
               BottomNavigationBarItem(
-                label: 'home',
-                  icon: Icon(
+                icon: Icon(
                     Icons.home,
                     color: current_page == 0 ? Colors.blue : Colors.white,
                   ),
-
+                label: 'home',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
