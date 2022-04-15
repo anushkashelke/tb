@@ -10,6 +10,7 @@ class CommunityListview extends StatefulWidget {
 
 class _CommunityListviewState extends State<CommunityListview> {
   final String commName="Classical Music";
+  final String commAbout="Classical music is a very general term which normally refers to the standard music of countries in the western world. It is music that has been composed by musicians who are trained in the art of writing music (composing) and written down in music notation so that other musicians can play it.";
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -30,7 +31,7 @@ class _CommunityListviewState extends State<CommunityListview> {
       ),
       onPressed: (){
       Navigator.push(context,
-        MaterialPageRoute(builder: (context) =>  CommunityPage(commN: commName)),);
+        MaterialPageRoute(builder: (context) =>  CommunityPage(commN: commName, commA: commAbout)),);
     },
     );
   }

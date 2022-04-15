@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:timbrebells/models/users.dart' as model;
+
+import '../models/community.dart' as commModel;
 
 class auth_methods {
   final FirebaseAuth _auth =
@@ -85,5 +88,35 @@ class auth_methods {
   //TO SIGN OUT
   Future<void> SignOut() async{
     await _auth.signOut();
+  }
+
+  Future<String> createComm(
+      {
+        required String commName,
+        required String commAbout,
+      }) async{
+    String res="Some error occured";
+    try{
+      if(commName.isNotEmpty || commAbout.isNotEmpty){
+        commModel.Comm_details comm=commModel.Comm_details(
+          comm_Name: commName,
+          description: commAbout,
+          comm_id:'',
+          username:FirebaseAuth.instance.currentUser!.toString(),
+          members: [],
+        );
+        _firestore.collection('Community').doc('Comm_Name').set(
+          comm.toJson(),
+        );
+        res="success";
+      }
+      else{
+        res="Please enter all the fields";
+      }
+    }
+    catch(err){
+      res=err.toString();
+    }
+    return res;
   }
 }

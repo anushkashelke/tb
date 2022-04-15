@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timbrebells/resources/auth_method.dart';
 
 
 import 'community_pageMain.dart';
@@ -10,8 +11,8 @@ class CreateAComm extends StatefulWidget {
 }
 
 class _CreateACommState extends State<CreateAComm> {
-  final commName = TextEditingController();
-
+  final _commName = TextEditingController();
+  final _commAbout = TextEditingController();
   // Initial Selected Value
   String dropdownvalue = 'Public';
 
@@ -21,8 +22,22 @@ class _CreateACommState extends State<CreateAComm> {
     'Restricted',
     'Private',
   ];
+  void dispose() {
+    super.dispose();
+    _commName.dispose();
+    _commAbout.dispose();
+  }
+  void createComm() async{
+    String res=await auth_methods().createComm(
+      commName:_commName.text,
+      commAbout:_commAbout.text,
+    );
+    if(res=="success"){
 
-  final commAbout = TextEditingController();
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +59,7 @@ class _CreateACommState extends State<CreateAComm> {
           Padding(
             padding: const EdgeInsets.only(top: 10,bottom: 10,right: 20,left: 20),
             child: TextField(
-                 controller: commName,
+                 controller: _commName,
               style: const TextStyle(
                 fontSize: 19,
               ),
@@ -88,7 +103,7 @@ class _CreateACommState extends State<CreateAComm> {
           Padding(
             padding: const EdgeInsets.only(top: 10,bottom: 10,right: 20,left: 20),
             child: TextField(
-              controller: commAbout,
+              controller: _commAbout,
               keyboardType: TextInputType.multiline,
               maxLines: null,
               style: const TextStyle(

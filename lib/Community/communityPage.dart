@@ -3,8 +3,9 @@ import '';
 import '../widgets/joinButton.dart';
 class CommunityPage extends StatefulWidget {
   final String commN;
+  final String commA;
 
-  const CommunityPage({Key? key, required this.commN}) : super(key: key);
+  const CommunityPage({Key? key, required this.commN, required this.commA}) : super(key: key);
 
   @override
   _CommunityPageState createState() => _CommunityPageState();
@@ -77,11 +78,11 @@ class _CommunityPageState extends State<CommunityPage> {
               ]
               ),
             ),
-            const Padding(
+             Padding(
               padding: EdgeInsets.only(top: 10,left: 10),
               child: Text(
-                "Classical music is a very general term which normally refers to the standard music of countries in the western world. It is music that has been composed by musicians who are trained in the art of writing music (composing) and written down in music notation so that other musicians can play it.",
-                style: TextStyle(
+                widget.commA,
+                  style: TextStyle(
                   fontSize: 18,
                   fontFamily: 'NotoSans',
                 )
